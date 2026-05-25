@@ -1,0 +1,137 @@
+package LinkedList;
+
+//1. SINGLY LINKED LIST
+
+class SinglyLinkedList {
+ private class Node {
+     int data;
+     Node next;
+     
+     Node(int val) {
+         data = val;
+         next = null;
+     }
+ }
+ 
+ private Node head;
+ 
+ public SinglyLinkedList() {
+     head = null;
+ }
+ 
+ // Add First - O(1)
+ public void addFirst(int val) {
+     Node newNode = new Node(val);
+     if (head == null) {
+         head = newNode;
+     } else {
+         newNode.next = head;
+         head = newNode;
+     }
+     System.out.println("Added " + val + " at beginning");
+ }
+ 
+ // Add Last - O(n)
+ public void addLast(int val) {
+     Node newNode = new Node(val);
+     if (head == null) {
+         head = newNode;
+     } else {
+         Node trav = head;
+         while (trav.next != null) {
+             trav = trav.next;
+         }
+         trav.next = newNode;
+     }
+     System.out.println("Added " + val + " at end");
+ }
+ 
+ // Delete First - O(1)
+ public void deleteFirst() {
+     if (head == null) {
+         System.out.println("List is empty");
+         return;
+     }
+     Node temp = head;
+     head = head.next;
+     System.out.println("Deleted first node with value: " + temp.data);
+ }
+ 
+ // Delete at Position - O(n)
+ public void deleteAtPos(int pos) {
+     if (head == null || pos == 1) {
+         deleteFirst();
+         return;
+     }
+     
+     Node trav = head;
+     for (int i = 1; i < pos - 1; i++) {
+         if (trav.next == null) {
+             System.out.println("Position out of bounds");
+             return;
+         }
+         trav = trav.next;
+     }
+     
+     if (trav.next == null) {
+         System.out.println("Position out of bounds");
+         return;
+     }
+     
+     Node temp = trav.next;
+     trav.next = temp.next;
+     System.out.println("Deleted node at position " + pos + " with value: " + temp.data);
+ }
+ 
+ // Search - O(n)
+ public Node search(int key) {
+     Node trav = head;
+     while (trav != null) {
+         if (trav.data == key) {
+             System.out.println("Found " + key + " in the list");
+             return trav;
+         }
+         trav = trav.next;
+     }
+     System.out.println(key + " not found in the list");
+     return null;
+ }
+ 
+ // Display
+ public void display() {
+     if (head == null) {
+         System.out.println("List is empty");
+         return;
+     }
+     System.out.print("Linked List: ");
+     Node trav = head;
+     while (trav != null) {
+         System.out.print(trav.data + " -> ");
+         trav = trav.next;
+     }
+     System.out.println("null");
+ }
+ 
+ public static void main(String[] args) {
+     System.out.println("\n===== SINGLY LINKED LIST DEMO =====");
+     SinglyLinkedList list = new SinglyLinkedList();
+     
+     list.addFirst(30);
+     list.addFirst(20);
+     list.addFirst(10);
+     list.display();
+     
+     list.addLast(40);
+     list.addLast(50);
+     list.display();
+     
+     list.search(30);
+     list.search(100);
+     
+     list.deleteFirst();
+     list.display();
+     
+     list.deleteAtPos(2);
+     list.display();
+ }
+}

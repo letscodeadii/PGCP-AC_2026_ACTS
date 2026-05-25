@@ -1,0 +1,37 @@
+package Searching;
+
+//9. LINEAR SEARCH
+//Best: O(1), Worst: O(n)
+
+
+class LinearSearch {
+ public static int linearSearch(int[] arr, int key) {
+     for (int i = 0; i < arr.length; i++) {
+         if (key == arr[i]) {
+             return i; // Element found at index i
+         }
+     }
+     return -1; // Element not found
+ }
+ 
+ public static void main(String[] args) {
+     System.out.println("\n===== LINEAR SEARCH DEMO =====");
+     int[] arr = {2, 4, 0, 1, 9};
+     int key = 1;
+     
+     int result = linearSearch(arr, key);
+     if (result != -1) {
+         System.out.println("Element " + key + " found at index: " + result);
+     } else {
+         System.out.println("Element " + key + " not found");
+     }
+     
+     key = 10;
+     result = linearSearch(arr, key);
+     if (result != -1) {
+         System.out.println("Element " + key + " found at index: " + result);
+     } else {
+         System.out.println("Element " + key + " not found");
+     }
+ }
+}

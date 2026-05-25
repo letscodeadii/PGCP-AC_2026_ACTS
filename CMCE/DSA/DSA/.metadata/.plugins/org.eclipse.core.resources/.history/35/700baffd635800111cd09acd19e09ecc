@@ -1,0 +1,333 @@
+package Sorting;
+
+import java.util.Arrays;
+
+public class SortingAlgorithms {
+    
+    // Selection Sort - O(n²)
+    public static void selectionSort(int[] a) {
+        int n = a.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (a[i] > a[j]) {
+                    swap(a, i, j);
+                }
+            }
+        }
+    }
+    
+    // Bubble Sort - O(n²)
+    public static void bubbleSort(int[] a) {
+        int n = a.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - 1; j++) {
+                if (a[j] > a[j + 1]) {
+                    swap(a, j, j + 1);
+                }
+            }
+        }
+    }
+    
+    // Bubble Sort Optimized - stops if no swaps occurred
+    public static void bubbleSortOptimized(int[] a) {
+        int n = a.length;
+        boolean swapped;
+        for (int i = 0; i < n - 1; i++) {
+            swapped = false;
+            for (int j = 0; j < n - 1 - i; j++) {
+                if (a[j] > a[j + 1]) {
+                    swap(a, j, j + 1);
+                    swapped = true;
+                }
+            }
+            if (!swapped) break;
+        }
+    }
+    
+    // Insertion Sort - O(n²) worst, O(n) best
+    public static void insertionSort(int[] arr) {
+        int n = arr.length;
+        for (int i = 1; i < n; i++) {
+            int temp = arr[i];
+            int j = i - 1;
+            while (j >= 0 && arr[j] > temp) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = temp;
+        }
+    }
+    
+    // Quick Sort
+    public static void quickSort(int[] arr, int left, int right) {
+        if (left >= right) return;
+        
+        int i = left, j = right;
+        while (i < j) {
+            while (i <= right && arr[i] <= arr[left]) i++;
+            while (arr[j] > arr[left]) j--;
+            if (i < j) swap(arr, i, j);
+        }
+        swap(arr, left, j);
+        quickSort(arr, left, j - 1);
+        quickSort(arr, j + 1, right);
+    }
+    
+    // Quick Sort - Wrapper method
+    public static void quickSort(int[] arr) {
+        quickSort(arr, 0, arr.length - 1);
+    }
+    
+    // Merge Sort
+    public static void mergeSort(int[] arr, int left, int right) {
+        if (left >= right) return;
+        
+        int mid = (left + right) / 2;
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+        
+        int cnt = right - left + 1;
+        int[] temp = new int[cnt];
+        
+        int i = left, j = mid + 1, k = 0;
+        while (i <= mid && j <= right) {
+            if (arr[i] < arr[j]) {
+                temp[k++] = arr[i++];
+            } else {
+                temp[k++] = arr[j++];
+            }
+        }
+        while (i <= mid) temp[k++] = arr[i++];
+        while (j <= right) temp[k++] = arr[j++];
+        
+        for (k = 0; k < cnt; k++) {
+            arr[left + k] = temp[k];
+        }
+    }
+    
+    // Merge Sort - Wrapper method
+    public static void mergeSort(int[] arr) {
+        mergeSort(arr, 0, arr.length - 1);
+    }
+    
+    // Heap Sort
+    public static void heapSort(int[] arr) {
+        int n = arr.length;
+        
+        // Build max heap
+        for (int i = n / 2 - 1; i >= 0; i--) {
+            heapify(arr, n, i);
+        }
+        
+        // Extract elements from heap one by one
+        for (int i = n - 1; i > 0; i--) {
+            swap(arr, 0, i);
+            heapify(arr, i, 0);
+        }
+    }
+    
+    private static void heapify(int[] arr, int n, int i) {
+        int largest = i;
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
+        
+        if (left < n && arr[left] > arr[largest]) {
+            largest = left;
+        }
+        if (right < n && arr[right] > arr[largest]) {
+            largest = right;
+        }
+        if (largest != i) {
+            swap(arr, i, largest);
+            heapify(arr, n, largest);
+        }
+    }
+    
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    
+    // Helper method to print array
+    private static void printArray(String message, int[] arr) {
+        System.out.print(message);
+        System.out.println(Arrays.toString(arr));
+    }
+    
+    // Helper method to copy array
+    private static int[] copyArray(int[] original) {
+        int[] copy = new int[original.length];
+        System.arraycopy(original, 0, copy, 0, original.length);
+        return copy;
+    }
+    
+    // MAIN METHOD
+    public static void main(String[] args) {
+        
+        // Original unsorted array
+        int[] original = {64, 34, 25, 12, 22, 11, 90, 5, 77, 33};
+        
+        System.out.println("=".repeat(70));
+        System.out.println("SORTING ALGORITHMS DEMONSTRATION");
+        System.out.println("=".repeat(70));
+        System.out.println("Original Array: " + Arrays.toString(original));
+        System.out.println();
+        
+        // 1. Selection Sort
+        int[] arr1 = copyArray(original);
+        System.out.println("1. SELECTION SORT - O(n²)");
+        System.out.println("   (Finds minimum and swaps with current position)");
+        long startTime = System.nanoTime();
+        selectionSort(arr1);
+        long endTime = System.nanoTime();
+        printArray("   Sorted: ", arr1);
+        System.out.println("   Time: " + (endTime - startTime) + " ns\n");
+        
+        // 2. Bubble Sort
+        int[] arr2 = copyArray(original);
+        System.out.println("2. BUBBLE SORT - O(n²)");
+        System.out.println("   (Compares adjacent elements and swaps if out of order)");
+        startTime = System.nanoTime();
+        bubbleSort(arr2);
+        endTime = System.nanoTime();
+        printArray("   Sorted: ", arr2);
+        System.out.println("   Time: " + (endTime - startTime) + " ns\n");
+        
+        // 3. Bubble Sort Optimized
+        int[] arr3 = copyArray(original);
+        System.out.println("3. BUBBLE SORT (OPTIMIZED) - O(n²)");
+        System.out.println("   (Stops early if array becomes sorted)");
+        startTime = System.nanoTime();
+        bubbleSortOptimized(arr3);
+        endTime = System.nanoTime();
+        printArray("   Sorted: ", arr3);
+        System.out.println("   Time: " + (endTime - startTime) + " ns\n");
+        
+        // 4. Insertion Sort
+        int[] arr4 = copyArray(original);
+        System.out.println("4. INSERTION SORT - O(n²) worst, O(n) best");
+        System.out.println("   (Builds sorted array one element at a time)");
+        startTime = System.nanoTime();
+        insertionSort(arr4);
+        endTime = System.nanoTime();
+        printArray("   Sorted: ", arr4);
+        System.out.println("   Time: " + (endTime - startTime) + " ns\n");
+        
+        // 5. Quick Sort
+        int[] arr5 = copyArray(original);
+        System.out.println("5. QUICK SORT - O(n log n) average, O(n²) worst");
+        System.out.println("   (Divide and conquer using pivot)");
+        startTime = System.nanoTime();
+        quickSort(arr5);
+        endTime = System.nanoTime();
+        printArray("   Sorted: ", arr5);
+        System.out.println("   Time: " + (endTime - startTime) + " ns\n");
+        
+        // 6. Merge Sort
+        int[] arr6 = copyArray(original);
+        System.out.println("6. MERGE SORT - O(n log n)");
+        System.out.println("   (Divide and conquer by splitting and merging)");
+        startTime = System.nanoTime();
+        mergeSort(arr6);
+        endTime = System.nanoTime();
+        printArray("   Sorted: ", arr6);
+        System.out.println("   Time: " + (endTime - startTime) + " ns\n");
+        
+        // 7. Heap Sort
+        int[] arr7 = copyArray(original);
+        System.out.println("7. HEAP SORT - O(n log n)");
+        System.out.println("   (Uses max heap data structure)");
+        startTime = System.nanoTime();
+        heapSort(arr7);
+        endTime = System.nanoTime();
+        printArray("   Sorted: ", arr7);
+        System.out.println("   Time: " + (endTime - startTime) + " ns\n");
+        
+        // Test with already sorted array (Best case scenario)
+        System.out.println("=".repeat(70));
+        System.out.println("BEST CASE SCENARIO (Already sorted array)");
+        System.out.println("=".repeat(70));
+        
+        int[] sorted = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        System.out.println("Array: " + Arrays.toString(sorted));
+        
+        int[] arr8 = copyArray(sorted);
+        startTime = System.nanoTime();
+        insertionSort(arr8);
+        endTime = System.nanoTime();
+        System.out.println("Insertion Sort (Best Case - O(n)): " + (endTime - startTime) + " ns");
+        
+        int[] arr9 = copyArray(sorted);
+        startTime = System.nanoTime();
+        bubbleSortOptimized(arr9);
+        endTime = System.nanoTime();
+        System.out.println("Bubble Sort Optimized (Best Case - O(n)): " + (endTime - startTime) + " ns\n");
+        
+        // Test with reverse sorted array (Worst case scenario)
+        System.out.println("=".repeat(70));
+        System.out.println("WORST CASE SCENARIO (Reverse sorted array)");
+        System.out.println("=".repeat(70));
+        
+        int[] reverse = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+        System.out.println("Array: " + Arrays.toString(reverse));
+        
+        int[] arr10 = copyArray(reverse);
+        startTime = System.nanoTime();
+        insertionSort(arr10);
+        endTime = System.nanoTime();
+        System.out.println("Insertion Sort (Worst Case - O(n²)): " + (endTime - startTime) + " ns");
+        
+        // Performance comparison with larger dataset
+        System.out.println("\n" + "=".repeat(70));
+        System.out.println("PERFORMANCE COMPARISON (1000 random elements)");
+        System.out.println("=".repeat(70));
+        
+        int[] largeArray = new int[1000];
+        for (int i = 0; i < largeArray.length; i++) {
+            largeArray[i] = (int) (Math.random() * 10000);
+        }
+        
+        // Quick Sort performance
+        int[] quickArr = copyArray(largeArray);
+        startTime = System.nanoTime();
+        quickSort(quickArr);
+        endTime = System.nanoTime();
+        System.out.printf("Quick Sort: %.3f ms%n", (endTime - startTime) / 1_000_000.0);
+        
+        // Merge Sort performance
+        int[] mergeArr = copyArray(largeArray);
+        startTime = System.nanoTime();
+        mergeSort(mergeArr);
+        endTime = System.nanoTime();
+        System.out.printf("Merge Sort: %.3f ms%n", (endTime - startTime) / 1_000_000.0);
+        
+        // Heap Sort performance
+        int[] heapArr = copyArray(largeArray);
+        startTime = System.nanoTime();
+        heapSort(heapArr);
+        endTime = System.nanoTime();
+        System.out.printf("Heap Sort: %.3f ms%n", (endTime - startTime) / 1_000_000.0);
+        
+        // Insertion Sort performance (much slower for large data)
+        int[] insertionArr = copyArray(largeArray);
+        startTime = System.nanoTime();
+        insertionSort(insertionArr);
+        endTime = System.nanoTime();
+        System.out.printf("Insertion Sort: %.3f ms%n", (endTime - startTime) / 1_000_000.0);
+        
+        System.out.println("\n" + "=".repeat(70));
+        System.out.println("TIME COMPLEXITY SUMMARY");
+        System.out.println("=".repeat(70));
+        System.out.println("┌─────────────────┬──────────┬──────────┬───────────┐");
+        System.out.println("│ Algorithm       │ Best     │ Average  │ Worst     │");
+        System.out.println("├─────────────────┼──────────┼──────────┼───────────┤");
+        System.out.println("│ Selection Sort  │ O(n²)    │ O(n²)    │ O(n²)     │");
+        System.out.println("│ Bubble Sort     │ O(n)     │ O(n²)    │ O(n²)     │");
+        System.out.println("│ Insertion Sort  │ O(n)     │ O(n²)    │ O(n²)     │");
+        System.out.println("│ Quick Sort      │ O(n log n)│ O(n log n)│ O(n²)    │");
+        System.out.println("│ Merge Sort      │ O(n log n)│ O(n log n)│ O(n log n)│");
+        System.out.println("│ Heap Sort       │ O(n log n)│ O(n log n)│ O(n log n)│");
+        System.out.println("└─────────────────┴──────────┴──────────┴───────────┘");
+    }
+}

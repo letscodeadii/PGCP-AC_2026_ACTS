@@ -1,0 +1,107 @@
+package InfixToPostfix;
+
+//16. INFIX TO POSTFIX CONVERSION
+
+
+import java.util.Stack;
+
+class InfixToPostfix {
+ 
+ // Function to return precedence of operators
+ private static int precedence(char op) {
+     switch (op) {
+         case '+':
+         case '-':
+             return 1;
+         case '*':
+         case '/':
+         case '%':
+             return 2;
+         case '^':
+             return 3;
+     }
+     return -1;
+ }
+ 
+ // Convert infix expression to postfix
+ public static String convert(String infix) {
+     StringBuilder postfix = new StringBuilder();
+     Stack<Character> stack = new Stack<>();
+     
+     for (int i = 0; i < infix.length(); i++) {
+         char ch = infix.charAt(i);
+         
+         // If operand, append to postfix
+         if (Character.isLetterOrDigit(ch)) {
+             postfix.append(ch);
+         }
+         // If '(', push to stack
+         else if (ch == '(') {
+             stack.push(ch);
+         }
+         // If ')', pop until '('
+         else if (ch == ')') {
+             while (!stack.isEmpty() && stack.peek() != '(') {
+                 postfix.append(stack.pop());
+             }
+             stack.pop(); // Remove '('
+         }
+         // If operator
+         else {
+             while (!stack.isEmpty() && precedence(stack.peek()) >= precedence(ch)) {
+                 postfix.append(stack.pop());
+             }
+             stack.push(ch);
+         }
+     }
+     
+     // Pop remaining operators
+     while (!stack.isEmpty()) {
+         postfix.append(stack.pop());
+     }
+     
+     return postfix.toString();
+ }
+ 
+ // Evaluate postfix expression
+ public static int evaluatePostfix(String postfix) {
+     Stack<Integer> stack = new Stack<>();
+     
+     for (int i = 0; i < postfix.length(); i++) {
+         char ch = postfix.charAt(i);
+         
+         if (Character.isDigit(ch)) {
+             stack.push(ch - '0');
+         } else {
+             int b = stack.pop();
+             int a = stack.pop();
+             
+             switch (ch) {
+                 case '+': stack.push(a + b); break;
+                 case '-': stack.push(a - b); break;
+                 case '*': stack.push(a * b); break;
+                 case '/': stack.push(a / b); break;
+                 case '^': stack.push((int)Math.pow(a, b)); break;
+             }
+         }
+     }
+     
+     return stack.pop();
+ }
+ 
+ public static void main(String[] args) {
+     System.out.println("\n===== INFIX TO POSTFIX DEMO =====");
+     
+     String infix1 = "A+B*C";
+     String infix2 = "4+3-(9-5)/2*8-6";
+     String infix3 = "(A+B)*(C-D)";
+     
+     System.out.println("Infix: " + infix1 + " -> Postfix: " + convert(infix1));
+     System.out.println("Infix: " + infix2 + " -> Postfix: " + convert(infix2));
+     System.out.println("Infix: " + infix3 + " -> Postfix: " + convert(infix3));
+     
+     // Evaluate postfix expression with digits
+     String postfixEval = "43+95-2/8*-6-";
+     System.out.println("\nEvaluating postfix: " + postfixEval + " = " + evaluatePostfix(postfixEval));
+ }
+}

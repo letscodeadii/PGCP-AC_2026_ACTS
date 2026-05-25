@@ -1,0 +1,49 @@
+package Sorting;
+
+//7. QUICK SORT
+//Average: O(n log n), Worst: O(n²)
+//============================================================
+
+class QuickSort {
+ public static void quickSort(int[] arr, int left, int right) {
+     if (left >= right) return;
+     
+     // Partition
+     int i = left, j = right;
+     int pivot = arr[left];
+     
+     while (i < j) {
+         // Find element greater than pivot from left
+         while (i <= right && arr[i] <= pivot) i++;
+         // Find element less than pivot from right
+         while (arr[j] > pivot) j--;
+         
+         if (i < j) {
+             // Swap arr[i] and arr[j]
+             int temp = arr[i];
+             arr[i] = arr[j];
+             arr[j] = temp;
+         }
+     }
+     
+     // Swap pivot with arr[j]
+     arr[left] = arr[j];
+     arr[j] = pivot;
+     
+     // Recursively sort left and right parts
+     quickSort(arr, left, j - 1);
+     quickSort(arr, j + 1, right);
+ }
+ 
+ public static void main(String[] args) {
+     System.out.println("\n===== QUICK SORT DEMO =====");
+     int[] arr = {10, 7, 8, 9, 1, 5};
+     System.out.print("Original array: ");
+     for (int num : arr) System.out.print(num + " ");
+     
+     quickSort(arr, 0, arr.length - 1);
+     System.out.print("\nSorted array:   ");
+     for (int num : arr) System.out.print(num + " ");
+     System.out.println();
+ }
+}

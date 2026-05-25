@@ -1,0 +1,101 @@
+package Queue;
+
+//============================================================
+//3. CIRCULAR QUEUE IMPLEMENTATION
+//============================================================
+
+class CircularQueue {
+ private int[] arr;
+ private int front;
+ private int rear;
+ private int count;  // Using count approach
+ private int capacity;
+ 
+ public CircularQueue(int size) {
+     arr = new int[size];
+     capacity = size;
+     front = -1;
+     rear = -1;
+     count = 0;
+ }
+ 
+ // Push operation - O(1)
+ public void push(int value) {
+     if (isFull()) {
+         System.out.println("Circular Queue Overflow! Cannot push " + value);
+         return;
+     }
+     if (isEmpty()) {
+         front = 0;
+     }
+     rear = (rear + 1) % capacity;
+     arr[rear] = value;
+     count++;
+     System.out.println("Enqueued: " + value);
+ }
+ 
+ // Pop operation - O(1)
+ public int pop() {
+     if (isEmpty()) {
+         throw new EmptyStackException();
+     }
+     int value = arr[front];
+     if (front == rear) {
+         // Last element
+         front = rear = -1;
+     } else {
+         front = (front + 1) % capacity;
+     }
+     count--;
+     return value;
+ }
+ 
+ // Peek operation - O(1)
+ public int peek() {
+     if (isEmpty()) {
+         throw new EmptyStackException();
+     }
+     return arr[front];
+ }
+ 
+ public boolean isEmpty() {
+     return count == 0;
+ }
+ 
+ public boolean isFull() {
+     return count == capacity;
+ }
+ 
+ public void display() {
+     if (isEmpty()) {
+         System.out.println("Queue is empty");
+         return;
+     }
+     System.out.print("Circular Queue elements: ");
+     for (int i = 0; i < count; i++) {
+         int idx = (front + i) % capacity;
+         System.out.print(arr[idx] + " ");
+     }
+     System.out.println();
+ }
+ 
+ public static void main(String[] args) {
+     System.out.println("\n===== CIRCULAR QUEUE DEMO =====");
+     CircularQueue cq = new CircularQueue(5);
+     
+     cq.push(10);
+     cq.push(20);
+     cq.push(30);
+     cq.push(40);
+     cq.push(50);
+     cq.display();
+     
+     System.out.println("Dequeued: " + cq.pop());
+     System.out.println("Dequeued: " + cq.pop());
+     cq.display();
+     
+     cq.push(60);
+     cq.push(70);
+     cq.display();
+ }
+}

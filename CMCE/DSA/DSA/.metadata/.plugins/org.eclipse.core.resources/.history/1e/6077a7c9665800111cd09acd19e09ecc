@@ -1,0 +1,91 @@
+package Queue;
+
+//2. QUEUE IMPLEMENTATION (Linear Queue)
+
+
+class LinearQueue {
+ private int[] arr;
+ private int front;
+ private int rear;
+ private int capacity;
+ 
+ public LinearQueue(int size) {
+     arr = new int[size];
+     capacity = size;
+     front = -1;
+     rear = -1;
+ }
+ 
+ // Push operation - O(1)
+ public void push(int value) {
+     if (isFull()) {
+         System.out.println("Queue Overflow! Cannot push " + value);
+         return;
+     }
+     if (isEmpty()) {
+         front = 0;
+     }
+     arr[++rear] = value;
+     System.out.println("Enqueued: " + value);
+ }
+ 
+ // Pop operation - O(1)
+ public int pop() {
+     if (isEmpty()) {
+         throw new EmptyStackException();
+     }
+     int value = arr[front];
+     if (front == rear) {
+         // Last element
+         front = rear = -1;
+     } else {
+         front++;
+     }
+     return value;
+ }
+ 
+ // Peek operation - O(1)
+ public int peek() {
+     if (isEmpty()) {
+         throw new EmptyStackException();
+     }
+     return arr[front];
+ }
+ 
+ // IsEmpty operation - O(1)
+ public boolean isEmpty() {
+     return front == -1;
+ }
+ 
+ // IsFull operation - O(1)
+ public boolean isFull() {
+     return rear == capacity - 1;
+ }
+ 
+ public void display() {
+     if (isEmpty()) {
+         System.out.println("Queue is empty");
+         return;
+     }
+     System.out.print("Queue elements: ");
+     for (int i = front; i <= rear; i++) {
+         System.out.print(arr[i] + " ");
+     }
+     System.out.println();
+ }
+ 
+ public static void main(String[] args) {
+     System.out.println("\n===== LINEAR QUEUE DEMO =====");
+     LinearQueue queue = new LinearQueue(5);
+     
+     queue.push(10);
+     queue.push(20);
+     queue.push(30);
+     queue.display();
+     
+     System.out.println("Front element: " + queue.peek());
+     System.out.println("Dequeued: " + queue.pop());
+     queue.display();
+     System.out.println("Is queue empty? " + queue.isEmpty());
+ }
+}

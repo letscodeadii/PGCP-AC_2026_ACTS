@@ -1,0 +1,135 @@
+package Tree;
+
+//13. BINARY SEARCH TREE
+//============================================================
+
+class BinarySearchTree {
+ private class Node {
+     int data;
+     Node left, right;
+     
+     Node(int val) {
+         data = val;
+         left = right = null;
+     }
+ }
+ 
+ private Node root;
+ 
+ public BinarySearchTree() {
+     root = null;
+ }
+ 
+ // Add node - O(h) where h is height of tree
+ public void add(int val) {
+     Node newNode = new Node(val);
+     if (root == null) {
+         root = newNode;
+         System.out.println("Added " + val + " as root");
+         return;
+     }
+     
+     Node trav = root;
+     while (true) {
+         if (val < trav.data) {
+             if (trav.left == null) {
+                 trav.left = newNode;
+                 System.out.println("Added " + val + " to left of " + trav.data);
+                 break;
+             }
+             trav = trav.left;
+         } else {
+             if (trav.right == null) {
+                 trav.right = newNode;
+                 System.out.println("Added " + val + " to right of " + trav.data);
+                 break;
+             }
+             trav = trav.right;
+         }
+     }
+ }
+ 
+ // Search node - O(h)
+ public Node search(int key) {
+     Node trav = root;
+     while (trav != null) {
+         if (key == trav.data) {
+             System.out.println("Found " + key + " in the tree");
+             return trav;
+         }
+         if (key < trav.data) {
+             trav = trav.left;
+         } else {
+             trav = trav.right;
+         }
+     }
+     System.out.println(key + " not found in the tree");
+     return null;
+ }
+ 
+ // Pre-order traversal: Parent, Left, Right
+ public void preorder(Node trav) {
+     if (trav == null) return;
+     System.out.print(trav.data + " ");
+     preorder(trav.left);
+     preorder(trav.right);
+ }
+ 
+ // In-order traversal: Left, Parent, Right (gives sorted order)
+ public void inorder(Node trav) {
+     if (trav == null) return;
+     inorder(trav.left);
+     System.out.print(trav.data + " ");
+     inorder(trav.right);
+ }
+ 
+ // Post-order traversal: Left, Right, Parent
+ public void postorder(Node trav) {
+     if (trav == null) return;
+     postorder(trav.left);
+     postorder(trav.right);
+     System.out.print(trav.data + " ");
+ }
+ 
+ // Height of tree
+ public int height(Node trav) {
+     if (trav == null) return -1;
+     int hl = height(trav.left);
+     int hr = height(trav.right);
+     return Math.max(hl, hr) + 1;
+ }
+ 
+ public void display() {
+     System.out.print("Pre-order traversal: ");
+     preorder(root);
+     System.out.println();
+     
+     System.out.print("In-order traversal (sorted): ");
+     inorder(root);
+     System.out.println();
+     
+     System.out.print("Post-order traversal: ");
+     postorder(root);
+     System.out.println();
+     
+     System.out.println("Height of tree: " + height(root));
+ }
+ 
+ public static void main(String[] args) {
+     System.out.println("\n===== BINARY SEARCH TREE DEMO =====");
+     BinarySearchTree bst = new BinarySearchTree();
+     
+     bst.add(50);
+     bst.add(30);
+     bst.add(20);
+     bst.add(40);
+     bst.add(70);
+     bst.add(60);
+     bst.add(80);
+     
+     bst.display();
+     
+     bst.search(40);
+     bst.search(100);
+ }
+}

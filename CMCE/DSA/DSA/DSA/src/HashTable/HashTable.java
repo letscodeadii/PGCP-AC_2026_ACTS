@@ -1,0 +1,110 @@
+package HashTable;
+
+//15. HASH TABLE (Simple Implementation)
+
+import java.util.LinkedList;
+
+class HashTable {
+ private class KeyValue {
+     int key;
+     String value;
+     
+     KeyValue(int key, String value) {
+         this.key = key;
+         this.value = value;
+     }
+ }
+ 
+ private LinkedList<KeyValue>[] table;
+ private int size;
+ 
+ @SuppressWarnings("unchecked")
+ public HashTable(int size) {
+     this.size = size;
+     table = new LinkedList[size];
+     for (int i = 0; i < size; i++) {
+         table[i] = new LinkedList<>();
+     }
+ }
+ 
+ // Hash function
+ private int hash(int key) {
+     return key % size;
+ }
+ 
+ // Insert key-value pair
+ public void put(int key, String value) {
+     int index = hash(key);
+     LinkedList<KeyValue> bucket = table[index];
+     
+     // Check if key already exists
+     for (KeyValue kv : bucket) {
+         if (kv.key == key) {
+             kv.value = value;
+             System.out.println("Updated: key=" + key + ", value=" + value);
+             return;
+         }
+     }
+     
+     // Add new key-value pair
+     bucket.add(new KeyValue(key, value));
+     System.out.println("Inserted: key=" + key + ", value=" + value + " at index " + index);
+ }
+ 
+ // Get value by key
+ public String get(int key) {
+     int index = hash(key);
+     LinkedList<KeyValue> bucket = table[index];
+     
+     for (KeyValue kv : bucket) {
+         if (kv.key == key) {
+             return kv.value;
+         }
+     }
+     return null;
+ }
+ 
+ // Remove key-value pair
+ public void remove(int key) {
+     int index = hash(key);
+     LinkedList<KeyValue> bucket = table[index];
+     
+     for (KeyValue kv : bucket) {
+         if (kv.key == key) {
+             bucket.remove(kv);
+             System.out.println("Removed: key=" + key);
+             return;
+         }
+     }
+     System.out.println("Key " + key + " not found");
+ }
+ 
+ public void display() {
+     System.out.println("\nHash Table contents:");
+     for (int i = 0; i < size; i++) {
+         System.out.print("Bucket " + i + ": ");
+         for (KeyValue kv : table[i]) {
+             System.out.print("[" + kv.key + ":" + kv.value + "] -> ");
+         }
+         System.out.println("null");
+     }
+ }
+ 
+ public static void main(String[] args) {
+     System.out.println("\n===== HASH TABLE DEMO =====");
+     HashTable ht = new HashTable(10);
+     
+     ht.put(1, "Apple");
+     ht.put(2, "Banana");
+     ht.put(11, "Orange");  // Collision with key 1 (both hash to index 1)
+     ht.put(21, "Grapes");  // Collision
+     
+     ht.display();
+     
+     System.out.println("\nGet key 11: " + ht.get(11));
+     System.out.println("Get key 5: " + ht.get(5));
+     
+     ht.remove(2);
+     ht.display();
+ }
+}

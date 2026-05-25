@@ -1,0 +1,48 @@
+package Searching;
+
+//2. BINARY SEARCH
+//Time Complexity: O(log n)
+//Note: Array must be sorted
+
+class BinarySearch {
+ public static int binarySearch(int[] arr, int key) {
+     int left = 0;
+     int right = arr.length - 1;
+     
+     while (left <= right) {
+         int mid = (left + right) / 2;
+         
+         if (key == arr[mid]) {
+             return mid; // Element found at index mid
+         }
+         
+         if (key < arr[mid]) {
+             right = mid - 1;
+         } else {
+             left = mid + 1;
+         }
+     }
+     return -1; // Element not found
+ }
+ 
+ public static void main(String[] args) {
+     System.out.println("\n===== BINARY SEARCH DEMO =====");
+     int[] arr = {2, 5, 8, 12, 16, 23, 38, 45, 56, 72};
+     int key = 23;
+     
+     int result = binarySearch(arr, key);
+     if (result != -1) {
+         System.out.println("Element " + key + " found at index: " + result);
+     } else {
+         System.out.println("Element " + key + " not found");
+     }
+     
+     key = 100;
+     result = binarySearch(arr, key);
+     if (result != -1) {
+         System.out.println("Element " + key + " found at index: " + result);
+     } else {
+         System.out.println("Element " + key + " not found");
+     }
+ }
+}

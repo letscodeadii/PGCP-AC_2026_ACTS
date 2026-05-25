@@ -1,0 +1,81 @@
+package Stack;
+
+//1. STACK IMPLEMENTATION
+
+
+import java.util.EmptyStackException;
+
+class StackUsingArray {
+ private int[] arr;
+ private int top;
+ private int capacity;
+ 
+ public StackUsingArray(int size) {
+     arr = new int[size];
+     capacity = size;
+     top = -1;
+ }
+ 
+ // Push operation - O(1)
+ public void push(int value) {
+     if (isFull()) {
+         System.out.println("Stack Overflow! Cannot push " + value);
+         return;
+     }
+     arr[++top] = value;
+     System.out.println("Pushed: " + value);
+ }
+ 
+ // Pop operation - O(1)
+ public int pop() {
+     if (isEmpty()) {
+         throw new EmptyStackException();
+     }
+     return arr[top--];
+ }
+ 
+ // Peek operation - O(1)
+ public int peek() {
+     if (isEmpty()) {
+         throw new EmptyStackException();
+     }
+     return arr[top];
+ }
+ 
+ // IsEmpty operation - O(1)
+ public boolean isEmpty() {
+     return top == -1;
+ }
+ 
+ // IsFull operation - O(1)
+ public boolean isFull() {
+     return top == capacity - 1;
+ }
+ 
+ public void display() {
+     if (isEmpty()) {
+         System.out.println("Stack is empty");
+         return;
+     }
+     System.out.print("Stack elements: ");
+     for (int i = 0; i <= top; i++) {
+         System.out.print(arr[i] + " ");
+     }
+     System.out.println();
+ }
+ 
+ public static void main(String[] args) {
+     System.out.println("===== STACK DEMO =====");
+     StackUsingArray stack = new StackUsingArray(5);
+     
+     stack.push(10);
+     stack.push(20);
+     stack.push(30);
+     stack.display();
+     
+     System.out.println("Top element: " + stack.peek());
+     System.out.println("Popped: " + stack.pop());
+     stack.display();
+     System.out.println("Is stack empty? " + stack.isEmpty());
+ }
+}

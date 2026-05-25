@@ -1,0 +1,90 @@
+package Sorting;
+
+public class SortingAlgorithms {
+    
+    // Selection Sort - O(n²)
+    public static void selectionSort(int[] a) {
+        int n = a.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (a[i] > a[j]) {
+                    swap(a, i, j);
+                }
+            }
+        }
+    }
+    
+    // Bubble Sort - O(n²)
+    public static void bubbleSort(int[] a) {
+        int n = a.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - 1; j++) {
+                if (a[j] > a[j + 1]) {
+                    swap(a, j, j + 1);
+                }
+            }
+        }
+    }
+    
+    // Insertion Sort - O(n²) worst, O(n) best
+    public static void insertionSort(int[] arr) {
+        int n = arr.length;
+        for (int i = 1; i < n; i++) {
+            int temp = arr[i];
+            int j = i - 1;
+            while (j >= 0 && arr[j] > temp) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = temp;
+        }
+    }
+    
+    // Quick Sort
+    public static void quickSort(int[] arr, int left, int right) {
+        if (left >= right) return;
+        
+        int i = left, j = right;
+        while (i < j) {
+            while (i <= right && arr[i] <= arr[left]) i++;
+            while (arr[j] > arr[left]) j--;
+            if (i < j) swap(arr, i, j);
+        }
+        swap(arr, left, j);
+        quickSort(arr, left, j - 1);
+        quickSort(arr, j + 1, right);
+    }
+    
+    // Merge Sort
+    public static void mergeSort(int[] arr, int left, int right) {
+        if (left >= right) return;
+        
+        int mid = (left + right) / 2;
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+        
+        int cnt = right - left + 1;
+        int[] temp = new int[cnt];
+        
+        int i = left, j = mid + 1, k = 0;
+        while (i <= mid && j <= right) {
+            if (arr[i] < arr[j]) {
+                temp[k++] = arr[i++];
+            } else {
+                temp[k++] = arr[j++];
+            }
+        }
+        while (i <= mid) temp[k++] = arr[i++];
+        while (j <= right) temp[k++] = arr[j++];
+        
+        for (k = 0; k < cnt; k++) {
+            arr[left + k] = temp[k];
+        }
+    }
+    
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+}
