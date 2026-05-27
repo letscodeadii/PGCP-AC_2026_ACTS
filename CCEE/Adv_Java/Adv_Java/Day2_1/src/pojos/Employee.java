@@ -14,6 +14,15 @@ public class Employee {
 	public Employee() {
 		//not required in JDBC
 	}
+	//construct
+	public Employee(int empId, String address, double salary, Date joinDate) {
+		super();
+		this.empId = empId;
+		this.address = address;
+		this.salary = salary;
+		this.joinDate = joinDate;
+	}
+	
 	//getter n setter
 	public int getEmpId() {
 		return empId;
@@ -21,6 +30,7 @@ public class Employee {
 	public void setEmpId(int empId) {
 		this.empId = empId;
 	}
+	
 	public String getName() {
 		return name;
 	}
@@ -52,6 +62,11 @@ public class Employee {
 		this.joinDate = joinDate;
 	}
 	//toString for debugging purpose;
+	@Override
+	public String toString() {
+		return "Employee [empId=" + empId + ", name=" + name + ", address=" + address + ", salary=" + salary
+				+ ", deprId=" + deprId + ", joinDate=" + joinDate + "]";
+	}
 	
 
 }

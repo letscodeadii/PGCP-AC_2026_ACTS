@@ -5,6 +5,8 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
+import pojos.Employee;
+
 public interface IEmployeeDao {
 	//Display details (id,name,salary,join,date) off all emps from a specific dept,
 	//join between start date n end date
