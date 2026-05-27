@@ -24,7 +24,7 @@ public class TestPreparedStatement {
 			pst.setDate(2, joinDate);
 			//execute the query : public RST executeQuery() throws SQLExecute
 			try(ResultSet rst=pst.executeQuery()){
-				while(rst.next())
+				while(rst.next())  
 					System.out.printf("Emp Id %d Name %s Address %s Salary %.1f Deptid %s Join Date %s %n",
 							rst.getInt(1),rst.getString(2),rst.getString(3),rst.getDouble(4),rst.getString(5),rst.getDate(6));
 			}//rst.close
