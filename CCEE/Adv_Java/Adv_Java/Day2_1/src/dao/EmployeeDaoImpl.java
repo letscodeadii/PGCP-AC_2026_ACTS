@@ -32,10 +32,8 @@ public class EmployeeDaoImpl implements IEmployeeDao {
 		try(ResultSet rst=pst1.executeQuery()){
 			while(rst.next())
 				emps.add(new Employee(rst.getInt(1),rst.getString(2),rst.getDouble(0),rst.getDate(4)));
-			
-			 
 		}
-		return null; 
+		return emps; 
 	}
 	
 	//add a method to clean up db resources 

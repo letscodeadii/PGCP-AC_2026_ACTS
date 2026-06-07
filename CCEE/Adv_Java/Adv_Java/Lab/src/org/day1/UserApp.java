@@ -14,7 +14,7 @@ public class UserApp {
 		
 		while(true) {
 			System.out.println("\n======USER MANAGEMENT=====");
-			System.out.println("1.Rgister a User");
+			System.out.println("1.Rgister a User"); 
 			System.out.println("2.List all Users based on City ");
 			System.out.println("3.Update Password of a user");
 			System.out.println("4.Display user information based on User Name");
