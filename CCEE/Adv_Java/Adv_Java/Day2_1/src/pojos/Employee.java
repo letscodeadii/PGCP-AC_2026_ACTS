@@ -8,7 +8,7 @@ public class Employee {
 	private String name;
 	private String address;
 	private double salary;
-	private String deprId;
+	private String deptId;
 	private Date joinDate;
 	//POJO specs: required in hibernate : def arr-less ctor
 	public Employee() {
@@ -23,6 +23,16 @@ public class Employee {
 		this.joinDate = joinDate;
 	}
 	
+	
+	
+	public Employee(String name, String address, double salary, String deprId, Date joinDate) {
+		super();
+		this.name = name;
+		this.address = address;
+		this.salary = salary;
+		this.deptId = deptId;
+		this.joinDate = joinDate;
+	}
 	//getter n setter
 	public int getEmpId() {
 		return empId;
@@ -50,10 +60,10 @@ public class Employee {
 		this.salary = salary;
 	}
 	public String getDeprId() {
-		return deprId;
+		return deptId;
 	}
 	public void setDeprId(String deprId) {
-		this.deprId = deprId;
+		this.deptId = deprId;
 	}
 	public Date getJoinDate() {
 		return joinDate;
@@ -65,7 +75,7 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [empId=" + empId + ", name=" + name + ", address=" + address + ", salary=" + salary
-				+ ", deprId=" + deprId + ", joinDate=" + joinDate + "]";
+				+ ", deprId=" + deptId + ", joinDate=" + joinDate + "]";
 	}
 	
 
