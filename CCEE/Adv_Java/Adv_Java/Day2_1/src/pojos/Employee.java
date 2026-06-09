@@ -25,7 +25,7 @@ public class Employee {
 	
 	
 	
-	public Employee(String name, String address, double salary, String deprId, Date joinDate) {
+	public Employee(String name, String address, double salary, String deptId, Date joinDate) {
 		super();
 		this.name = name;
 		this.address = address;
@@ -59,11 +59,11 @@ public class Employee {
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
-	public String getDeprId() {
+	public String getDeptId() {
 		return deptId;
 	}
-	public void setDeprId(String deprId) {
-		this.deptId = deprId;
+	public void setDeptId(String deptId) {
+		this.deptId = deptId;
 	}
 	public Date getJoinDate() {
 		return joinDate;
@@ -75,7 +75,7 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [empId=" + empId + ", name=" + name + ", address=" + address + ", salary=" + salary
-				+ ", deprId=" + deptId + ", joinDate=" + joinDate + "]";
+				+ ", deptId=" + deptId + ", joinDate=" + joinDate + "]";
 	}
 	
 

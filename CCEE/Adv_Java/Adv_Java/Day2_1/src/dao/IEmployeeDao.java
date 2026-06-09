@@ -12,5 +12,8 @@ public interface IEmployeeDao {
 	//join between start date n end date
 
 	List<Employee> getSelectedEmpDetails(String dept,Date beginDate ,Date endDate) throws SQLException;
+	//add a method to insert new emp details
+	String insertEmpDetails(Employee employee) throws SQLException;
+	
 	
 }

@@ -13,12 +13,13 @@ import static utils.DBUtils.openConnection;
 public class EmployeeDaoImpl implements IEmployeeDao {
 	//STATE :instance vars
 	private Connection cn;
-	private PreparedStatement pst1;
+	private PreparedStatement pst1,pst2;
 	
 	public EmployeeDaoImpl() throws SQLException {
 		//get fix db connection from DBUtils
 		cn=openConnection();
 		pst1=cn.prepareStatement("select empid,name,salary,join_date from my_emp where deptid=? and join_date between ? and ?");
+		pst2=cn.prepareStatement("insert into my_emp values(default,?,?,?,?,?)");
 		System.out.println("emp dao created...");
 	}
 
@@ -31,15 +32,38 @@ public class EmployeeDaoImpl implements IEmployeeDao {
 		pst1.setDate(3, endDate);
 		try(ResultSet rst=pst1.executeQuery()){
 			while(rst.next())
-				emps.add(new Employee(rst.getInt(1),rst.getString(2),rst.getDouble(0),rst.getDate(4)));
+				emps.add(new Employee(rst.getInt(1),rst.getString(2),rst.getDouble(3),rst.getDate(4)));
 		}
 		return emps; 
 	}
 	
+	
+	
+	@Override
+	public String insertEmpDetails(Employee employee) throws SQLException {
+		
+		// set in params
+		//name    | addr   | salary | deptid | join_date
+		pst2.setString(1,employee.getName());
+		pst2.setString(2,employee.getAddress());
+		pst2.setDouble(3, employee.getSalary());
+		pst2.setString(4, employee.getDeptId());
+		pst2.setDate(5, employee.getJoinDate());
+		//execute the query : insert : DML : Method of PST : public int executeUpdate() throws SQLException
+		int updateCount=pst2.executeUpdate();
+		if(updateCount==1)
+			return "Emp Details Inserted...";
+		return "Emp details insertion failed...";
+	}
+
 	//add a method to clean up db resources 
 	public void cleanUp() throws SQLException {
 		if(pst1!=null)
 			pst1.close();
+		if(pst2!=null)
+			pst2.close();
+		
+		if(pst2!=null)
 		if(cn!=null)
 			cn.close();
 		System.out.println("emp dao cleanup up !");

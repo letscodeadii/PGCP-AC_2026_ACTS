@@ -16,7 +16,7 @@ public class TestEmpCRUD {
 			EmployeeDaoImpl dao=new EmployeeDaoImpl();
 			boolean exit=false;
 			while(!exit) {
-				System.out.println("1. Get Emp Details 10.Exit");
+				System.out.println("1. Get Emp Details 2. Insert Emp Details 10.Exit");
 				try {
 					switch(sc.nextInt()) {
 					case 1://get emp details 
@@ -25,7 +25,12 @@ public class TestEmpCRUD {
 						empList.forEach(System.out::println);
 						break;
 						
-					case 2://destroy(shut down):clean up d resources 
+					case 2:
+						System.out.println("Enter employee details : Name | Addr | Salary | DeptId | Join_Date(yy-mm-dd) ");
+					    System.out.println(dao.insertEmpDetails(new Employee(sc.next(),sc.next(),sc.nextDouble(),sc.next(),Date.valueOf(sc.next()))));   
+						
+					case 10://destroy(shut down):clean up d resources 
+						exit=true;
 						dao.cleanUp();
 						break;
 					}
