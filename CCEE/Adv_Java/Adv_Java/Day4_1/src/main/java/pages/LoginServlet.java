@@ -16,7 +16,7 @@ import javax.management.RuntimeErrorException;
 
 import dao.UserDaoImpl;
 
-@WebServlet("/aunthenticate")
+@WebServlet( value = "/authenticate",loadOnStartup = 1)
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserDaoImpl userDao;
@@ -62,9 +62,21 @@ public class LoginServlet extends HttpServlet {
 			if (user == null)
 				pw.print("<h5>Invalid Login Please <a href='login.html'>Retry</a></h5>");
 			// not null => successful login : send validate user details to clnt
-			else
-				pw.print("<h5>Login Successful, User Details : " + user + "</h5>");
-
+			else {
+				pw.print("<h5>Login Successful, User Details from login servlet " + user + "</h5>");
+				pw.flush();//explicitly committing the response : un comment this line to understand IllegalStateException 
+			    //automatically redirect the client to the topics page 
+				//API of HttpServletResponse 
+				//Method :public void sendRedirect(String redirectLocation) throws IOException
+				response.sendRedirect("topics");
+			    //WC: sends temp redirect response
+				//resp : SC 302 | header : location = topics | body :EMPTY
+				//web browser : send NEW request 
+				//URL: http://host:port/day4.1/topics
+				//HTTP method: GET 
+				//add a TopicServlet : with / topics 
+				
+			}
 		} catch (Exception e) {
 			// re throw the exception to caller(WC)
 			throw new ServletException("err in do-post of " + getClass(), e);
