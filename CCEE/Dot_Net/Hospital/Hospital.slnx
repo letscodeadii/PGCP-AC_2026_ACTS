@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Hospital.Models/Hospital.Models.csproj" />
+  <Project Path="Hospital.Web/Hospital.Web.csproj" />
+</Solution>
