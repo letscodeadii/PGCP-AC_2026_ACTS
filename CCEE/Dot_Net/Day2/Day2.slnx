@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="ConstructorsAndObjectInitializers/ConstructorsAndObjectInitializers.csproj" Id="4c21ce13-167f-49d7-97e7-20cf36632ad8" />
+  <Project Path="Inheritance/Inheritance.csproj" Id="4b06e370-9d69-4024-be2d-40ada2135cff" />
+  <Project Path="Properties/Properties.csproj" Id="958e1ee2-0473-46f1-bdc3-1a36b5c6a133" />
+  <Project Path="StaticMembers/StaticMembers.csproj" Id="70d988ee-cde8-40b9-8c58-d3b00890c6e7" />
+  <Project Path="TestAccessSpecifiers/TestAccessSpecifiers.csproj" Id="4e3eb008-9073-47b6-a3b1-e0dcfc23511d" />
+</Solution>

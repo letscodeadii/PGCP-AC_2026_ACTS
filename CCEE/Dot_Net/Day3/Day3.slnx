@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="InheritanceExamples/InheritanceExamples.csproj" />
+  <Project Path="Interfaces/Interfaces.csproj" />
+</Solution>

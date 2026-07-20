@@ -1,0 +1,7 @@
+C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day4\IDisposableExample\bin\Debug\IDisposableExample.exe.config
+C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day4\IDisposableExample\bin\Debug\IDisposableExample.exe
+C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day4\IDisposableExample\bin\Debug\IDisposableExample.pdb
+C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day4\IDisposableExample\obj\Debug\IDisposableExample.csproj.AssemblyReference.cache
+C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day4\IDisposableExample\obj\Debug\IDisposableExample.csproj.CoreCompileInputs.cache
+C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day4\IDisposableExample\obj\Debug\IDisposableExample.exe
+C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day4\IDisposableExample\obj\Debug\IDisposableExample.pdb

@@ -6,6 +6,41 @@ using System.Threading.Tasks;
 
 namespace BasicClassConcepts
 {
+    class class2
+    {
+        static void Main()
+        {
+            DoSomething();
+            int i = 100;
+
+            //local functions
+            //local func can be defined within another func
+            //local func only be called from the outer func
+            //local func can access variables defined in outer func
+            //local func is implicitly private
+
+            void DoSomething2()
+            {
+                int j = 100;
+                Console.WriteLine(i);
+                Console.WriteLine("DoSomething");
+            }
+            Console.WriteLine(j);
+            DoSomething2();
+        }
+        static void DoSomething()
+        {
+            Console.WriteLine("DoSomething");
+
+        }
+
+        static void Display()
+        {
+            Console.WriteLine("display");
+
+        }
+
+    }
     class Program
     {
         static void Main1()
@@ -85,37 +120,7 @@ namespace BasicClassConcepts
 
         }
 
-        static void Main()
-        {
-            DoSomething();
-            int i = 100;
-
-            //local functions
-            //local func can be defined within another func
-            //local func only be called from the outer func
-            //local func can access variables defined in outer func
-            //local func is implicitly private
-
-            void DoSomething2()
-            {
-                int j = 100;
-                Console.WriteLine(i);
-                Console.WriteLine("DoSomething");
-            }
-            Console.WriteLine(j);
-            DoSomething2();
-        }
-        static void DoSomething()
-        {
-
-        }
-
-
-        static void Display()
-        {
-            Console.WriteLine("display");
-
-        }
+        
     }
     public class Class1
     {

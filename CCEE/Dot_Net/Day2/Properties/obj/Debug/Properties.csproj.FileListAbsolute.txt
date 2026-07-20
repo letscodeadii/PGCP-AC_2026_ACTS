@@ -1,0 +1,7 @@
+C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day2\Properties\bin\Debug\Properties.exe.config
+C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day2\Properties\bin\Debug\Properties.exe
+C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day2\Properties\bin\Debug\Properties.pdb
+C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day2\Properties\obj\Debug\Properties.csproj.AssemblyReference.cache
+C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day2\Properties\obj\Debug\Properties.csproj.CoreCompileInputs.cache
+C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day2\Properties\obj\Debug\Properties.exe
+C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day2\Properties\obj\Debug\Properties.pdb
