@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;in.sp.test&apos; to &apos;in.as.test&apos;&#x0D;&#x0A;- Original project: &apos;JdbcInsertDemo&apos;&#x0D;&#x0A;- Original element: &apos;JdbcInsertDemo/src/in.sp.test&apos;&#x0D;&#x0A;- Renamed element: &apos;JdbcInsertDemo/src/in.as.test&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;in.sp.test&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;in.sp.test" name="in.as.test" qualified="false" references="true" stamp="1785089015230" textual="false" version="1.0"/>
+</session>

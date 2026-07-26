@@ -1,6 +1,0 @@
-C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day2\TestAccessSpecifiers\bin\Debug\TestAccessSpecifiers.dll
-C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day2\TestAccessSpecifiers\bin\Debug\TestAccessSpecifiers.pdb
-C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day2\TestAccessSpecifiers\obj\Debug\TestAccessSpecifiers.csproj.AssemblyReference.cache
-C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day2\TestAccessSpecifiers\obj\Debug\TestAccessSpecifiers.csproj.CoreCompileInputs.cache
-C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day2\TestAccessSpecifiers\obj\Debug\TestAccessSpecifiers.dll
-C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day2\TestAccessSpecifiers\obj\Debug\TestAccessSpecifiers.pdb

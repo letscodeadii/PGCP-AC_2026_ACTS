@@ -1,7 +1,0 @@
-C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day3\InheritanceExamples\bin\Debug\InheritanceExamples.exe.config
-C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day3\InheritanceExamples\bin\Debug\InheritanceExamples.exe
-C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day3\InheritanceExamples\bin\Debug\InheritanceExamples.pdb
-C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day3\InheritanceExamples\obj\Debug\InheritanceExamples.csproj.AssemblyReference.cache
-C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day3\InheritanceExamples\obj\Debug\InheritanceExamples.csproj.CoreCompileInputs.cache
-C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day3\InheritanceExamples\obj\Debug\InheritanceExamples.exe
-C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day3\InheritanceExamples\obj\Debug\InheritanceExamples.pdb

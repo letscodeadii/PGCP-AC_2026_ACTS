@@ -1,7 +1,0 @@
-C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day2\ConstructorsAndObjectInitializers\bin\Debug\ConstructorsAndObjectInitializers.exe.config
-C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day2\ConstructorsAndObjectInitializers\bin\Debug\ConstructorsAndObjectInitializers.exe
-C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day2\ConstructorsAndObjectInitializers\bin\Debug\ConstructorsAndObjectInitializers.pdb
-C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day2\ConstructorsAndObjectInitializers\obj\Debug\ConstructorsAndObjectInitializers.csproj.AssemblyReference.cache
-C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day2\ConstructorsAndObjectInitializers\obj\Debug\ConstructorsAndObjectInitializers.csproj.CoreCompileInputs.cache
-C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day2\ConstructorsAndObjectInitializers\obj\Debug\ConstructorsAndObjectInitializers.exe
-C:\Users\letsm\PGCP-AC_2026_ACTS\CCEE\Dot_Net\Day2\ConstructorsAndObjectInitializers\obj\Debug\ConstructorsAndObjectInitializers.pdb

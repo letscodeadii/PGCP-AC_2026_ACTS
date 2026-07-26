@@ -1,0 +1,17 @@
+package in.sp.test;
+
+import java.sql.DriverManager;
+
+public class InsertDemo {
+	public static void main(String[] args) throws Exception {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		String url = "jdbc:mysql://localhost:3306/jdbc_db";
+        String username = "root";
+        String password = "Adii#24aug"; // Verify this is correct
+        
+        // Option 1: Standard connection
+        conn = DriverManager.getConnection(url, username, password);
+		System.out.println("Success");
+	}
+
+}

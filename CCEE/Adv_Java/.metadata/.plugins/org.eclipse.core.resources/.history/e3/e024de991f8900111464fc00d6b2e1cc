@@ -1,0 +1,16 @@
+package in.as.update;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+public class UpdateDemo {
+	public static void main(String[] args) throws Exception{
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection con=DriverManager("jdbc:mysql://localhost:3306/jdbc_db","root","Adii#@24aug");
+		
+		PreparedStatement ps=con.preparedStatement("update register set city=? where email=? ");
+		
+	}
+
+}
