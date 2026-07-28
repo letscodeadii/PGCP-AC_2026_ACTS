@@ -1,4 +1,4 @@
-# CLAUDE.md — Smart College ERP v2
+# Readme.md — Smart College ERP v2
 
 Microservice ERP: Spring Boot backend + React frontend. Roles: ADMIN, FACULTY, STUDENT, PARENT.
 
