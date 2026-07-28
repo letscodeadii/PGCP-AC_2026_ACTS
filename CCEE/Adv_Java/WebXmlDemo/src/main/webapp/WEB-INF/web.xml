@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<servlet>
+		<servlet-name>mylogin</servlet-name>
+		<servlet-class>in.as.backend.Login</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ml</servlet-name>
+		<url-pattern>/mylogin</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>mr</servlet-name>
+		<servlet-class>in.as.backend.Register</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>mr</servlet-name>
+		<url-pattern>/myreg</url-pattern>
+	</servlet-mapping>
+</web-app>
