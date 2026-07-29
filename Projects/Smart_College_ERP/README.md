@@ -1,4 +1,4 @@
-# Readme.md — Smart College ERP v2
+# REARME.md — Smart College ERP v2
 
 Microservice ERP: Spring Boot backend + React frontend. Roles: ADMIN, FACULTY, STUDENT, PARENT.
 
